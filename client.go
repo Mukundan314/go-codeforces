@@ -4,6 +4,7 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -20,6 +21,12 @@ type Client struct {
 	apiSecret  *string
 	locale     *string
 	httpClient *http.Client
+}
+
+type apiResponse struct {
+	Status  string          `json:"status"`
+	Comment string          `json:"comment,omitempty"`
+	Result  json.RawMessage `json:"result,omitempty"`
 }
 
 var DefaultClient = NewClient()
@@ -89,7 +96,16 @@ func (c *Client) makeApiCall(method string, params map[string][]string, v interf
 		return err
 	}
 
-	return json.Unmarshal(body, v)
+	var res apiResponse
+	if err := json.Unmarshal(body, &res); err != nil {
+		return err
+	}
+
+	if res.Status == "FAILED" {
+		return errors.New(res.Comment)
+	}
+
+	return json.Unmarshal(res.Result, v)
 }
 
 func (c *Client) SetApiKey(apiKey, apiSecret string) {
