@@ -1,3 +1,3 @@
-module github.com/Mukundan314/go-codeforces
+module github.com/mukundan314/go-codeforces
 
 go 1.14
