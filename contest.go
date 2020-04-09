@@ -4,12 +4,6 @@ import (
 	"strconv"
 )
 
-type ContestStandingsResponse struct {
-	Contest  Contest       `json:"contest"`
-	Problems []Problem     `json:"problems"`
-	Rows     []RanklistRow `json:"rows"`
-}
-
 // Returns list of hacks in the specified contests. Full information about
 // hacks is available only after some time after the contest end. During the
 // contest user can see only own hacks.
@@ -80,7 +74,7 @@ func GetContestRatingChanges(contestId int) ([]RatingChange, error) {
 // Field "problems" contains a list of Problem objects.
 // Field "rows" contains a list of RanklistRow objects.
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.standings
-func (c *Client) GetContestStandings(contestId, from, count int, handles []string, room int, showUnofficial bool) (ContestStandingsResponse, error) {
+func (c *Client) GetContestStandings(contestId, from, count int, handles []string, room int, showUnofficial bool) (Contest, []Problem, []RanklistRow, error) {
 	params := make(map[string][]string)
 
 	params["contestId"] = []string{strconv.FormatInt(int64(contestId), 10)}
@@ -97,10 +91,15 @@ func (c *Client) GetContestStandings(contestId, from, count int, handles []strin
 		params["room"] = []string{strconv.FormatInt(int64(room), 10)}
 	}
 
-	var res ContestStandingsResponse
+	var res struct {
+		Contest  Contest       `json:"contest"`
+		Problems []Problem     `json:"problems"`
+		Rows     []RanklistRow `json:"rows"`
+	}
+
 	err := c.makeApiCall("contest.standings", params, &res)
 
-	return res, err
+	return res.Contest, res.Problems, res.Rows, err
 }
 
 // Set count to 0 for infinite count.
@@ -113,7 +112,7 @@ func (c *Client) GetContestStandings(contestId, from, count int, handles []strin
 // Field "rows" contains a list of RanklistRow objects.
 // GetContestStandings is a wrapper around DefaultClient.GetContestStandings
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.standings
-func GetContestStandings(contestId, from, count int, handles []string, room int, showUnofficial bool) (ContestStandingsResponse, error) {
+func GetContestStandings(contestId, from, count int, handles []string, room int, showUnofficial bool) (Contest, []Problem, []RanklistRow, error) {
 	return DefaultClient.GetContestStandings(contestId, from, count, handles, room, showUnofficial)
 }
 
