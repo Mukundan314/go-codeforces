@@ -19,7 +19,7 @@ func (c *Client) GetBlogEntryComments(blogEntryID int) ([]Comment, error) {
 
 // GetBlogEntryComments returns a list of comments to the specified blog entry.
 //
-// GetBlogEntryComments is a wrapper around DefaultClient.GetBlogEntryComments
+// GetBlogEntryComments is a wrapper around DefaultClient.GetBlogEntryComments.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#blogEntry.comments
 func GetBlogEntryComments(blogEntryID int) ([]Comment, error) {
@@ -41,7 +41,7 @@ func (c *Client) GetBlogEntry(blogEntryID int) (BlogEntry, error) {
 
 // GetBlogEntry returns blog entry.
 //
-// GetBlogEntry is a wrapper around DefaultClient.GetBlogEntry
+// GetBlogEntry is a wrapper around DefaultClient.GetBlogEntry.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#blogEntry.view
 func GetBlogEntry(blogEntryID int) (BlogEntry, error) {

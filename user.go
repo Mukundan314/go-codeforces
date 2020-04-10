@@ -19,7 +19,7 @@ func (c *Client) GetUserBlogEntries(handle string) ([]BlogEntry, error) {
 
 // GetUserBlogEntries returns a list of all user's blog entries.
 //
-// GetUserBlogEntries is a wrapper around DefaultClient.GetUserBlogEntries
+// GetUserBlogEntries is a wrapper around DefaultClient.GetUserBlogEntries.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.blogEntries
 func GetUserBlogEntries(handle string) ([]BlogEntry, error) {
@@ -43,7 +43,7 @@ func (c *Client) GetUserFriends(onlyOnline bool) ([]string, error) {
 // GetUserFriends returns authorized user's friends. Using this method requires
 // authorization.
 //
-// GetUserFriends is a wrapper around DefaultClient.GetUserFriends
+// GetUserFriends is a wrapper around DefaultClient.GetUserFriends.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.friends
 func GetUserFriends(onlyOnline bool) ([]string, error) {
@@ -65,7 +65,7 @@ func (c *Client) GetUserInfo(handles []string) ([]User, error) {
 
 // GetUserInfo returns information about one or several users.
 //
-// GetUserInfo is a wrapper around DefaultClient.GetUserInfo
+// GetUserInfo is a wrapper around DefaultClient.GetUserInfo.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.info
 func GetUserInfo(handles []string) ([]User, error) {
@@ -89,7 +89,7 @@ func (c *Client) GetUserRatedList(activeOnly bool) ([]User, error) {
 // GetUserRatedList returns the list users who have participated in at least
 // one rated contest.
 //
-// GetUserRatedList is a wrapper around DefaultClient.GetUserRatedList
+// GetUserRatedList is a wrapper around DefaultClient.GetUserRatedList.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.ratedList
 func GetUserRatedList(activeOnly bool) ([]User, error) {
@@ -111,7 +111,7 @@ func (c *Client) GetUserRating(handle string) ([]RatingChange, error) {
 
 // GetUserRating returns rating history of the specified user.
 //
-// GetUserRating is a wrapper around DefaultClient.GetUserRating
+// GetUserRating is a wrapper around DefaultClient.GetUserRating.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.rating
 func GetUserRating(handle string) ([]RatingChange, error) {
@@ -141,7 +141,7 @@ func (c *Client) GetUserStatus(handle string, from, count int) ([]Submission, er
 //
 // Set count to 0 for infinite count.
 //
-// GetUserStatus is a wrapper around DefaultClient.GetUserStatus
+// GetUserStatus is a wrapper around DefaultClient.GetUserStatus.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#user.status
 func GetUserStatus(handle string, from, count int) ([]Submission, error) {

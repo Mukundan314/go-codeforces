@@ -19,7 +19,7 @@ func (c *Client) GetRecentActions(maxCount int) ([]RecentAction, error) {
 
 // GetRecentActions returns recent actions.
 //
-// GetRecentActions is a wrapper around DefaultClient.GetRecentActions
+// GetRecentActions is a wrapper around DefaultClient.GetRecentActions.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#recentActions
 func GetRecentActions(maxCount int) ([]RecentAction, error) {

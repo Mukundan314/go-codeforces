@@ -23,7 +23,7 @@ func (c *Client) GetContestHacks(contestID int) ([]Hack, error) {
 // information about hacks is available only after some time after the contest
 // end. During the contest user can see only own hacks.
 //
-// GetContestHacks is a wrapper around DefaultClient.GetContestHacks
+// GetContestHacks is a wrapper around DefaultClient.GetContestHacks.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.hacks
 func GetContestHacks(contestID int) ([]Hack, error) {
@@ -45,7 +45,7 @@ func (c *Client) GetContestList(gym bool) ([]Contest, error) {
 
 // GetContestList returns information about all available contests.
 //
-// GetContestList is a wrapper around DefaultClient.GetContestList
+// GetContestList is a wrapper around DefaultClient.GetContestList.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.list
 func GetContestList(gym bool) ([]Contest, error) {
@@ -67,7 +67,8 @@ func (c *Client) GetContestRatingChanges(contestID int) ([]RatingChange, error) 
 
 // GetContestRatingChanges returns rating changes after the contest.
 //
-// GetContestRatingChanges is a wrapper around DefaultClient.GetContestRatingChanges
+// GetContestRatingChanges is a wrapper around
+// DefaultClient.GetContestRatingChanges.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.ratingChanges
 func GetContestRatingChanges(contestID int) ([]RatingChange, error) {
@@ -127,7 +128,7 @@ func (c *Client) GetContestStandings(contestID, from, count int, handles []strin
 // Field "problems" contains a list of Problem objects.
 // Field "rows" contains a list of RanklistRow objects.
 //
-// GetContestStandings is a wrapper around DefaultClient.GetContestStandings
+// GetContestStandings is a wrapper around DefaultClient.GetContestStandings.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.standings
 func GetContestStandings(contestID, from, count int, handles []string, room int, showUnofficial bool) (Contest, []Problem, []RanklistRow, error) {
@@ -166,7 +167,7 @@ func (c *Client) GetContestStatus(contestID int, handle string, from, count int)
 // Set handle to a empty string to get status for all handles.
 // Set count to 0 for infinite count.
 //
-// GetContestStatus is a wrapper around DefaultClient.GetContestStatus
+// GetContestStatus is a wrapper around DefaultClient.GetContestStatus.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#contest.status
 func GetContestStatus(contestID int, handle string, from, count int) ([]Submission, error) {

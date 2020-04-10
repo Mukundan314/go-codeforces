@@ -35,7 +35,7 @@ func (c *Client) GetProblemsetProblems(tags []string, problemsetName string) ([]
 //
 // Leave problemsetName empty for default problemset.
 //
-// GetProblemsetProblems is a wrapper around DefaultClient.GetProblemsetProblems
+// GetProblemsetProblems is a wrapper around DefaultClient.GetProblemsetProblems.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.problems
 func GetProblemsetProblems(tags []string, problemsetName string) ([]Problem, []ProblemStatistics, error) {
@@ -65,7 +65,7 @@ func (c *Client) GetProblemsetRecentStatus(count int, problemsetName string) ([]
 //
 // Leave problemsetName empty for default problemset.
 //
-// GetProblemsetRecentStatus is a wrapper around DefaultClient.GetProblemsetRecentStatus
+// GetProblemsetRecentStatus is a wrapper around DefaultClient.GetProblemsetRecentStatus.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.recentStatus
 func GetProblemsetRecentStatus(count int, problemsetName string) ([]Submission, error) {
