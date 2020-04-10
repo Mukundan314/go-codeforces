@@ -29,15 +29,22 @@ type apiResponse struct {
 	Result  json.RawMessage `json:"result,omitempty"`
 }
 
+// DefaultClient is the default Client and is used by GetBlogEntryComments,
+// GetBlogEntry, GetContestHacks, GetContestList, GetContestRatingChanges,
+// GetContestStandings, GetContestStatus, GetProblemsetProblems,
+// GetProblemsetRecentStatus, GetRecentActions, GetUserBlogEntries,
+// GetUserFriends, GetUserInfo, GetUserRatedList, GetUserRating and
+// GetUserStatus
 var DefaultClient = NewClient()
 
+// NewClient creates a new Client
 func NewClient() *Client {
 	return &Client{
 		httpClient: &http.Client{},
 	}
 }
 
-func (c *Client) getApiSig(method string, params map[string][]string) (string, error) {
+func (c *Client) getAPISig(method string, params map[string][]string) (string, error) {
 	q := url.Values{}
 	for k, v := range params {
 		q.Set(k, strings.Join(v, ";"))
@@ -51,7 +58,7 @@ func (c *Client) getApiSig(method string, params map[string][]string) (string, e
 	return r + apiSig, nil
 }
 
-func (c *Client) makeApiCall(method string, params map[string][]string, v interface{}) error {
+func (c *Client) makeAPICall(method string, params map[string][]string, v interface{}) error {
 	u, err := url.Parse("http://codeforces.com/api/")
 	if err != nil {
 		return err
@@ -65,7 +72,7 @@ func (c *Client) makeApiCall(method string, params map[string][]string, v interf
 		params["time"] = []string{strconv.FormatInt(time.Now().Unix(), 10)}
 		params["apiKey"] = []string{*c.apiKey}
 
-		apiSig, err := c.getApiSig(method, params)
+		apiSig, err := c.getAPISig(method, params)
 		if err != nil {
 			return err
 		}
@@ -108,11 +115,13 @@ func (c *Client) makeApiCall(method string, params map[string][]string, v interf
 	return json.Unmarshal(res.Result, v)
 }
 
-func (c *Client) SetApiKey(apiKey, apiSecret string) {
+// SetAPIKey sets apiKey and apiSecret of a client
+func (c *Client) SetAPIKey(apiKey, apiSecret string) {
 	c.apiKey = &apiKey
 	c.apiSecret = &apiSecret
 }
 
+// SetLocale sets locale of a client
 func (c *Client) SetLocale(locale string) {
 	c.locale = &locale
 }

@@ -4,8 +4,11 @@ import (
 	"strconv"
 )
 
+// GetProblemsetProblems returns all problems from problemset. Problems can be
+// filtered by tags.
+//
 // Leave problemsetName empty for default problemset
-// Returns all problems from problemset. Problems can be filtered by tags.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.problems
 func (c *Client) GetProblemsetProblems(tags []string, problemsetName string) ([]Problem, []ProblemStatistics, error) {
 	params := make(map[string][]string)
@@ -22,21 +25,27 @@ func (c *Client) GetProblemsetProblems(tags []string, problemsetName string) ([]
 		ProblemStatistics []ProblemStatistics `json:"problemStatistics"`
 	}
 
-	err := c.makeApiCall("problemset.problems", params, &res)
+	err := c.makeAPICall("problemset.problems", params, &res)
 
 	return res.Problems, res.ProblemStatistics, err
 }
 
+// GetProblemsetProblems returns all problems from problemset. Problems can be
+// filtered by tags.
+//
 // Leave problemsetName empty for default problemset
-// Returns all problems from problemset. Problems can be filtered by tags.
+//
 // GetProblemsetProblems is a wrapper around DefaultClient.GetProblemsetProblems
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.problems
 func GetProblemsetProblems(tags []string, problemsetName string) ([]Problem, []ProblemStatistics, error) {
 	return DefaultClient.GetProblemsetProblems(tags, problemsetName)
 }
 
+// GetProblemsetRecentStatus returns recent submissions.
+//
 // Leave problemsetName empty for default problemset
-// Returns recent submissions.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.recentStatus
 func (c *Client) GetProblemsetRecentStatus(count int, problemsetName string) ([]Submission, error) {
 	params := make(map[string][]string)
@@ -47,14 +56,17 @@ func (c *Client) GetProblemsetRecentStatus(count int, problemsetName string) ([]
 	}
 
 	var res []Submission
-	err := c.makeApiCall("problemset.recentStatus", params, &res)
+	err := c.makeAPICall("problemset.recentStatus", params, &res)
 
 	return res, err
 }
 
+// GetProblemsetRecentStatus returns recent submissions.
+//
 // Leave problemsetName empty for default problemset
-// Returns recent submissions.
+//
 // GetProblemsetRecentStatus is a wrapper around DefaultClient.GetProblemsetRecentStatus
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.recentStatus
 func GetProblemsetRecentStatus(count int, problemsetName string) ([]Submission, error) {
 	return DefaultClient.GetProblemsetRecentStatus(count, problemsetName)

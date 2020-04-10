@@ -1,12 +1,13 @@
 package codeforces
 
-// Represents a Codeforces user.
+// User represents a Codeforces user.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#User
 type User struct {
 	Handle                  string `json:"handle"`
 	Email                   string `json:"email,omitempty"`
-	VkId                    string `json:"vkId,omitempty"`
-	OpenId                  string `json:"openId,omitempty"`
+	VkID                    string `json:"vkId,omitempty"`
+	OpenID                  string `json:"openId,omitempty"`
 	FirstName               string `json:"firstName,omitempty"`
 	LastName                string `json:"lastName,omitempty"`
 	Country                 string `json:"country,omitempty"`
@@ -24,10 +25,12 @@ type User struct {
 	TitlePhoto              string `json:"titlePhoto"`
 }
 
-// Represents a Codeforces blog entry. May be in either short or full version.
+// BlogEntry represents a Codeforces blog entry. May be in either short or full
+// version.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#BlogEntry
 type BlogEntry struct {
-	Id                      int      `json:"id"`
+	ID                      int      `json:"id"`
 	OriginalLocale          string   `json:"originalLocale"`
 	CreationTimeSeconds     int      `json:"creationTimeSeconds"`
 	AuthorHandle            string   `json:"authorHandle"`
@@ -40,19 +43,21 @@ type BlogEntry struct {
 	Rating                  int      `json:"rating"`
 }
 
-// Represents a comment.
+// Comment represents a comment.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Comment
 type Comment struct {
-	Id                  int    `json:"id"`
+	ID                  int    `json:"id"`
 	CreationTimeSeconds int    `json:"creationTimeSeconds"`
 	CommentatorHandle   string `json:"commentatorHandle"`
 	Locale              string `json:"locale"`
 	Text                string `json:"text"`
-	ParentCommentId     int    `json:"parentCommentId,omitempty"`
+	ParentCommentID     int    `json:"parentCommentId,omitempty"`
 	Rating              int    `json:"rating"`
 }
 
-// Represents a recent action.
+// RecentAction represents a recent action.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#RecentAction
 type RecentAction struct {
 	TimeSeconds int       `json:"timeSeconds"`
@@ -60,10 +65,11 @@ type RecentAction struct {
 	Comment     Comment   `json:"comment"`
 }
 
-// Represents a participation of user in rated contest.
+// RatingChange represents a participation of user in rated contest.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#RatingChange
 type RatingChange struct {
-	ContestId               int    `json:"contestId"`
+	ContestID               int    `json:"contestId"`
 	ContestName             string `json:"contestName"`
 	Handle                  string `json:"handle"`
 	Rank                    int    `json:"rank"`
@@ -72,10 +78,11 @@ type RatingChange struct {
 	NewRating               int    `json:"newRating"`
 }
 
-// Represents a contest on Codeforces.
+// Contest represents a contest on Codeforces.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Contest
 type Contest struct {
-	Id                  int    `json:"id"`
+	ID                  int    `json:"id"`
 	Name                string `json:"name"`
 	Type                string `json:"type"`
 	Phase               string `json:"phase"`
@@ -84,7 +91,7 @@ type Contest struct {
 	StartTimeSeconds    int    `json:"startTimeSeconds,omitempty"`
 	RelativeTimeSeconds int    `json:"relativeTimeSeconds,omitempty"`
 	PreparedBy          string `json:"preparedBy,omitempty"`
-	WebsiteUrl          string `json:"websiteUrl,omitempty"`
+	WebsiteURL          string `json:"websiteUrl,omitempty"`
 	Description         string `json:"description,omitempty"`
 	Difficulty          int    `json:"difficulty,omitempty"`
 	Kind                string `json:"kind,omitempty"`
@@ -94,29 +101,32 @@ type Contest struct {
 	Season              string `json:"season,omitempty"`
 }
 
-// Represents a party, participating in a contest.
+// Party represents a party, participating in a contest.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Party
 type Party struct {
-	ContestId        int      `json:"contestId,omitempty"`
+	ContestID        int      `json:"contestId,omitempty"`
 	Members          []Member `json:"members"`
 	ParticipantType  string   `json:"participantType"`
-	TeamId           int      `json:"teamId,omitempty"`
+	TeamID           int      `json:"teamId,omitempty"`
 	TeamName         string   `json:"teamName,omitempty"`
 	Ghost            bool     `json:"ghost"`
 	Room             int      `json:"room,omitempty"`
 	StartTimeSeconds int      `json:"startTimeSeconds,omitempty"`
 }
 
-// Represents a member of a party.
+// Member represents a member of a party.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Member
 type Member struct {
 	Handle string `json:"handle"`
 }
 
-// Represents a problem.
+// Problem represents a problem.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Problem
 type Problem struct {
-	ContestId      int      `json:"contestId,omitempty"`
+	ContestID      int      `json:"contestId,omitempty"`
 	ProblemsetName string   `json:"problemsetName,omitempty"`
 	Index          string   `json:"index"`
 	Name           string   `json:"name"`
@@ -126,19 +136,21 @@ type Problem struct {
 	Tags           []string `json:"tags"`
 }
 
-// Represents a statistic data about a problem.
+// ProblemStatistics represents a statistic data about a problem.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#ProblemStatistics
 type ProblemStatistics struct {
-	ContestId   int    `json:"contestId,omitempty"`
+	ContestID   int    `json:"contestId,omitempty"`
 	Index       string `json:"index"`
 	SolvedCount int    `json:"solvedCount"`
 }
 
-// Represents a submission.
+// Submission represents a submission.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Submission
 type Submission struct {
-	Id                  int     `json:"id"`
-	ContestId           int     `json:"contestId,omitempty"`
+	ID                  int     `json:"id"`
+	ContestID           int     `json:"contestId,omitempty"`
 	CreationTimeSeconds int     `json:"creationTimeSeconds"`
 	RelativeTimeSeconds int     `json:"relativeTimeSeconds"`
 	Problem             Problem `json:"problem"`
@@ -151,10 +163,11 @@ type Submission struct {
 	MemoryConsumedBytes int     `json:"memoryConsumedBytes"`
 }
 
-// Represents a hack, made during Codeforces Round.
+// Hack represents a hack, made during Codeforces Round.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#Hack
 type Hack struct {
-	Id                  int     `json:"id"`
+	ID                  int     `json:"id"`
 	CreationTimeSeconds int     `json:"creationTimeSeconds"`
 	Hacker              Party   `json:"hacker"`
 	Defender            Party   `json:"defender"`
@@ -168,7 +181,8 @@ type Hack struct {
 	} `json:"judgeProtocol,omitempty"`
 }
 
-// Represents a ranklist row.
+// RanklistRow represents a ranklist row.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#RanklistRow
 type RanklistRow struct {
 	Party                     Party           `json:"party"`
@@ -181,7 +195,8 @@ type RanklistRow struct {
 	LastSubmissionTimeSeconds int             `json:"lastSubmissionTimeSeconds,omitempty"`
 }
 
-// Represents a submissions results of a party for a problem.
+// ProblemResult represents a submissions results of a party for a problem.
+//
 // Codeforces API docs: https://codeforces.com/apiHelp/objects#ProblemResult
 type ProblemResult struct {
 	Points                    float64 `json:"points"`
