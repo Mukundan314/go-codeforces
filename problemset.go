@@ -7,7 +7,7 @@ import (
 // GetProblemsetProblems returns all problems from problemset. Problems can be
 // filtered by tags.
 //
-// Leave problemsetName empty for default problemset
+// Leave problemsetName empty for default problemset.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.problems
 func (c *Client) GetProblemsetProblems(tags []string, problemsetName string) ([]Problem, []ProblemStatistics, error) {
@@ -33,7 +33,7 @@ func (c *Client) GetProblemsetProblems(tags []string, problemsetName string) ([]
 // GetProblemsetProblems returns all problems from problemset. Problems can be
 // filtered by tags.
 //
-// Leave problemsetName empty for default problemset
+// Leave problemsetName empty for default problemset.
 //
 // GetProblemsetProblems is a wrapper around DefaultClient.GetProblemsetProblems
 //
@@ -44,7 +44,7 @@ func GetProblemsetProblems(tags []string, problemsetName string) ([]Problem, []P
 
 // GetProblemsetRecentStatus returns recent submissions.
 //
-// Leave problemsetName empty for default problemset
+// Leave problemsetName empty for default problemset.
 //
 // Codeforces API docs: https://codeforces.com/apiHelp/methods#problemset.recentStatus
 func (c *Client) GetProblemsetRecentStatus(count int, problemsetName string) ([]Submission, error) {
@@ -63,7 +63,7 @@ func (c *Client) GetProblemsetRecentStatus(count int, problemsetName string) ([]
 
 // GetProblemsetRecentStatus returns recent submissions.
 //
-// Leave problemsetName empty for default problemset
+// Leave problemsetName empty for default problemset.
 //
 // GetProblemsetRecentStatus is a wrapper around DefaultClient.GetProblemsetRecentStatus
 //
